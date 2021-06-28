@@ -12,7 +12,9 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalClose= document.querySelector("span.close");
+//--------Validation du formulaire et message de validation--------//
 const Formulaire = document.getElementById("formulaire");
+const formChild = Formulaire.children;
 
 //----Gestion de l'affichage de la modale-----//
 
@@ -55,10 +57,11 @@ var nom_error = document.getElementById("last-error");
 
 function validationNomPrenom (element, element_error) {
   console.log("Entré dans la fonction validationNomPrenom");
-  if (element.value.length <2 || element.value.match(/^ /)) {
+  if (element.value.length <2 || element.value.match(/^ /) || element.value.length == 0) {
     console.log("Entré dans la fonction validationNomPrenom -- Condition si faux");
     element_error.innerText = "Veuillez entrer 2 caractères ou plus pour dans ce champ.";
     validationBorderFalse (element, element_error);
+    formulaireIncorrect++;
   } else {
     console.log("Entré dans la fonction validationNomPrenom -- Condition si vrai");
     validationBorderTrue (element, element_error);    
@@ -79,6 +82,7 @@ function validationMail () {
     console.log("Entré dans la fonction validationMail -- Condition si faux");
     mail_error.innerText = "Veuillez saisir une adresse mail valide.";
     validationBorderFalse (mail, mail_error);
+    formulaireIncorrect++;
   }
 }
 
@@ -94,7 +98,8 @@ function validationBirthdate () {
   } else {
     console.log("Entré dans la fonction validationBirthdate -- Condition si faux");
     birthdate_error.innerText = "Veuillez saisir une date.";
-    validationBorderFalse (birthdate, birthdate_error);   
+    validationBorderFalse (birthdate, birthdate_error);
+    formulaireIncorrect++; 
   }
 }
 
@@ -110,7 +115,8 @@ function validationQuantity () {
   } else {
     console.log("Entré dans la fonction validationQuantity -- Condition si faux");
     quantity_error.innerText = "Veuillez saisir une valeur comprise entre 0 et 99.";
-    validationBorderFalse (quantity, quantity_error);   
+    validationBorderFalse (quantity, quantity_error);
+    formulaireIncorrect++; 
   }
 }
 
@@ -138,6 +144,7 @@ function validationLocation () {
     location_error.innerText = "Veuillez sélectionner une ville."; 
     location_error.style.fontSize = '12px';
     location_error.style.color = 'red';
+    formulaireIncorrect++;
   }
 }
 
@@ -151,18 +158,23 @@ function validationConditions () {
     console.log("Entré dans la fonction validationConditions -- Condition si vrai");
     checkbox_error.innerText = "";
   } else {
-    console.log("Entré dans la fonction validationConditions -- Condition si vrai");
+    console.log("Entré dans la fonction validationConditions -- Condition si faux");
     checkbox_error.innerText = "Vous devez vérifier que vous acceptez les termes et conditions.";
     checkbox_error.style.fontSize = '12px';
     checkbox_error.style.color = 'red';
+    formulaireIncorrect++;
   }
 }
 
 //Bouton btnSubmit et validation du formulaire
 var btnSubmit = document.getElementById("btn-submit");
 btnSubmit.addEventListener("click", validationFormulaire);
+let 
 
-function validationFormulaire(){
+function validationFormulaire(event){
+
+  event.preventDefault();
+  formulaireIncorrect = 0;
   console.log("validation formulaire");
   validationNomPrenom (prenom, prenom_error);
   validationNomPrenom (nom, nom_error);
@@ -171,4 +183,25 @@ function validationFormulaire(){
   validationQuantity ();
   validationLocation ();
   validationConditions ();
+  console.log("Nombre de champs incorrects : " + formulaireIncorrect);
+  afficherMessage (formulaireIncorrect);
+}
+
+function afficherMessage (formulaireIncorrect) {
+  console.log("entré dans afficher message");
+  if (formulaireIncorrect == 0) {
+    console.log("nous sommes presque dans le texte")
+    for (child of formChild) {
+      child.classList.add("select-hide");
+    }
+    console.log("Entré dans l'affichage du message de remerciement")
+    messageRemerciement ();
+  }  
+}
+
+function messageRemerciement () { //ajout du message de remerciement
+  console.log("Entré dans la fonction messageRemerciement")
+  var textValid = document.createElement("p");
+  Formulaire.appendChild(textValid).innerText = "Merci ! Votre réservation a été reçue.";
+  textValid.setAttribute('id', 'Text-validation');
 }
