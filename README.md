@@ -1,5 +1,6 @@
-#Créer une landing page avec JavaScript
-##Travail demandé :
+# Créer une landing page avec JavaScript
+
+## Travail demandé :
 1. Compléter le code JavaScript pour rendre le site fonctionnel;
 2. S'aider des issues pour démarrer
 3. Travailler sur un repo GitHub forké ;
