@@ -9,7 +9,7 @@
 6. Tester manuellement les fonctionnalités, les entrées de formulaire et l'affichage responsive.
 
 ## Liens
-Liens GitHub Pages : https://lisatashtiyeva.github.io/LisaTashtiyeva_4_11032021/
+Lien GitHub Pages : https://lisatashtiyeva.github.io/LisaTashtiyeva_4_11032021/
 
 Maquettes du porjet : https://www.figma.com/file/prxFGnSUoEhk6PTcMaJQim/UI-Design-GameOn-EN?node-id=0%3A1
 
