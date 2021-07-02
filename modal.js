@@ -169,7 +169,6 @@ function validationConditions () {
 //Bouton btnSubmit et validation du formulaire
 var btnSubmit = document.getElementById("btn-submit");
 btnSubmit.addEventListener("click", validationFormulaire);
-let 
 
 function validationFormulaire(event){
 
