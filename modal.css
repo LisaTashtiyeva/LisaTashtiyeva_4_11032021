@@ -173,6 +173,7 @@ main {
   margin: 5% auto;
   width: 100%;
   max-width: 500px;
+  height: 750px;
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
   background: #232323;
@@ -181,6 +182,7 @@ main {
   position: relative;
   color: #fff;
   padding-top: 10px;
+  overflow: auto;
 }
 
 .modal-body {
@@ -387,6 +389,26 @@ input[data-error]::after {
   left: 0;
   right: 0;
   z-index: 99;
+}
+
+#Text-validation {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  padding: 20px  ;
+  font-weight: normal;
+  font-size: 30px;
+  z-index: 99;
+  width: 100%;
+}
+
+.btn-fermer {
+  position: absolute;
+  z-index: 99;
+  bottom: 10%;
+  left: 28%;
+
+
 }
 
 /* Hide the items when the select box is closed: */

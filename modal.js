@@ -211,10 +211,12 @@ function messageRemerciement () {
 function btnClose () {
   console.log("Ajout bouton 'Fermer'")
   var btnFermer = document.createElement("button");
-  var btnClose = document.getElementById("btnClose");
   Formulaire.appendChild(btnFermer);
   btnFermer.innerText = "Fermer";
   btnFermer.setAttribute('id', 'btnClose');
+  var btnClose = document.getElementById("btnClose");
   btnFermer.classList.add('btn-close');
+  btnFermer.classList.add('btn-fermer');
   btnClose.addEventListener("click",closeModal);
+  console.log("height" + Formulaire.style.height.value);
 }
