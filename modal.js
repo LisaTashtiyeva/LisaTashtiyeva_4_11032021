@@ -198,9 +198,23 @@ function afficherMessage (formulaireIncorrect) {
   }  
 }
 
-function messageRemerciement () { //ajout du message de remerciement
+//ajout du message de remerciement
+function messageRemerciement () { 
   console.log("Entré dans la fonction messageRemerciement")
   var textValid = document.createElement("p");
   Formulaire.appendChild(textValid).innerText = "Merci ! Votre réservation a été reçue.";
   textValid.setAttribute('id', 'Text-validation');
+  btnClose ();
+}
+
+//ajout du bouton fermer
+function btnClose () {
+  console.log("Ajout bouton 'Fermer'")
+  var btnFermer = document.createElement("button");
+  var btnClose = document.getElementById("btnClose");
+  Formulaire.appendChild(btnFermer);
+  btnFermer.innerText = "Fermer";
+  btnFermer.setAttribute('id', 'btnClose');
+  btnFermer.classList.add('btn-close');
+  btnClose.addEventListener("click",closeModal);
 }
